@@ -8,7 +8,6 @@
     <thead>
     <tr>
         <td>Nombre</td>
-        <td>Actiones</td>
 
     </tr>
     </thead>
@@ -20,11 +19,7 @@
 
         <tr>
             {% if Lista.finalizada == False %}
-            <td><a class="btn btn-primary" href="{% url 'compra:compra_lista_id' Lista.id%}">{{ Lista.nombre }}</a></td>
-            <td>
-                <a class="btn btn-primary" href="{% url 'compra:lista_actualizar' Lista.id %}">Editar</a>
-            </td>
-
+            <td><a class="" href="{% url 'compra:lista_actualizar' Lista.id%}">{{ Lista.nombre }}</a></td>
             {% endif %}
 
 
@@ -34,10 +29,10 @@
     {% endfor %}
 
     {% else %}
-    <h3>No existen registros</h3>
+    <h3>Crea tu lista ahora!</h3>
     {% endif %}
     </tbody>
 </table>
-
+<a class="btn btn-primary" href="{% url 'compra:lista_crear' %}"> + </a>
 
 {% endblock %}
