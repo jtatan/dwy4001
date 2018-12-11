@@ -4,8 +4,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'api_producto_lista', views.ProductoSerializer)
-router.register(r'api_tienda_lista', views.TiendaSerializer, basename='api')
+router.register(r'api_producto_lista', views.ProductoViewSet)
+router.register(r'api_tienda_lista', views.TiendaViewSet, basename='api')
 
 app_name = 'api'
 

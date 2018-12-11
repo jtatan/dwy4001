@@ -7,8 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^compra/', include('apps.compra.urls', namespace="compra")),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^', include('api.urls')),
     path('accounts/', include('allauth.urls')),
     path('',include('pwa.urls')),
-
+    url(r'^', include('apps.api.urls')),
 ]
