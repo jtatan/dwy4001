@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, '/static/js','serviceWorker.js')  # OJO CON ESTO, no tengo claro si DWY4001 es la carpeta de la app que creaste con startapp o es la del django-admin stratproject.  debe ser aqui la que se crea con startapp y me parece que esa es listados, PERO REVISA Y ME CUENTAS
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,6 +42,13 @@ INSTALLED_APPS = [
     'apps.producto',
     'apps.compra',
     'apps.usuario',
+    'accounts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +78,8 @@ TEMPLATES = [
         },
     },
 ]
+
+SITE_ID = 1
 
 WSGI_APPLICATION = 'listado.wsgi.application'
 
@@ -122,3 +132,45 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    }
+}
+
+SOCIAL_AUTH_FACEBOOK_KEY = '917016235169933'
+SOCIAL_AUTH_FACEBOOK_SECRET = '2aebf828a707fbfb80147b116b8a2020'
+
+LOGIN_REDIRECT_URL='/'
