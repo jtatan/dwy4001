@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, '{% static %}/js','serviceWorker.js')  # OJO CON ESTO, no tengo claro si DWY4001 es la carpeta de la app que creaste con startapp o es la del django-admin stratproject.  debe ser aqui la que se crea con startapp y me parece que esa es listados, PERO REVISA Y ME CUENTAS
 
 
@@ -176,3 +177,5 @@ SOCIAL_AUTH_FACEBOOK_KEY = '917016235169933'
 SOCIAL_AUTH_FACEBOOK_SECRET = '2aebf828a707fbfb80147b116b8a2020'
 
 LOGIN_REDIRECT_URL='/'
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js/serviceWorker.js')  # OJO CON ESTO, no tengo claro si DWY4001 es la carpeta de la app que creaste con startapp o es la del django-admin stratproject.  debe ser aqui la que se crea con startapp y me parece que esa es listados, PERO REVISA Y ME CUENTAS
