@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'pwa',
+    'push_notifications',
 ]
 
 MIDDLEWARE = [
@@ -174,3 +175,8 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '2aebf828a707fbfb80147b116b8a2020'
 LOGIN_REDIRECT_URL='/'
 
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js/serviceWorker.js')  # OJO CON ESTO, no tengo claro si DWY4001 es la carpeta de la app que creaste con startapp o es la del django-admin stratproject.  debe ser aqui la que se crea con startapp y me parece que esa es listados, PERO REVISA Y ME CUENTAS
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+'GCM_API_KEY': '< your api key >',
+'APNS_CERTIFICATE': '/path/to/your/certificate.pem',
+}
