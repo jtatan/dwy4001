@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.dispatch import receiver
@@ -42,4 +41,3 @@ def logout_view(request):
 def create_user_profile(request, user, **kwargs):
     profile = Profile.objects.create(user=user)
     profile.save()
-
