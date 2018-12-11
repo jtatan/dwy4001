@@ -20,6 +20,12 @@ class Lista_Actualizador(UpdateView):
     template_name = 'compra/lista_crear.html'
     success_url = reverse_lazy('compra:lista_listar')
 
+class Lista_Crear(CreateView):
+    model = Lista
+    form_class = Lista_Formulario
+    template_name = 'compra/lista_crear.html'
+    success_url = reverse_lazy('compra:lista_listar')
+
 #PROLISTA
 class ProLista_Listar(ListView):
     template_name = 'compra/lista_productos_listar.html'
@@ -46,6 +52,7 @@ class ProLista_Listar(ListView):
         context['total_presupuestado'] = total_final
 
         return context
+
 class ProLista_Actualizador(UpdateView):
     model = ProLista
     form_class = ProLista_Formulario
@@ -58,4 +65,8 @@ class ProLista_Comprar(UpdateView):
     template_name = 'compra/lista_productos_comprar.html'
     success_url = reverse_lazy('compra:compra_lista')
 
-
+class ProLista_Crear(CreateView):
+    model = ProLista
+    form_class = ProLista_Formulario
+    template_name = 'compra/lista_productos_comprar.html'
+    success_url = reverse_lazy('compra:compra_lista')

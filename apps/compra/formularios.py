@@ -44,7 +44,7 @@ class ProLista_Compra(forms.ModelForm):
         widgets = {
 
             'costo_real': forms.NumberInput(attrs={'class': 'form-control'}),
-            'comprado': forms.CheckboxInput(attrs={'class': 'form-control'})
+            'comprado': forms.NumberInput(attrs={'class': 'form-control'})
 
         }
 

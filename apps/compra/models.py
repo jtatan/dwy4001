@@ -10,8 +10,8 @@ class ProLista(models.Model):
     cantidad = models.PositiveIntegerField(default=1)
     costo_presupuestado = models.PositiveIntegerField(null=True, blank=True)
     tienda = models.ForeignKey(Tienda, null=True, blank=True, on_delete=models.CASCADE)
-    costo_real = models.PositiveIntegerField(null=True, blank=True)
-    lista = models.ForeignKey('Lista', null=False, blank=False, on_delete=models.CASCADE)
+    costo_real = models.PositiveIntegerField(null=True)
+    lista = models.ForeignKey('Lista', default='lista', null=False, blank=False, on_delete=models.CASCADE)
     comprado = models.BooleanField(default=False)
 
     def __str__(self):
@@ -28,7 +28,7 @@ class Lista(models.Model):
 
 class Compra(models.Model):
     lista = models.ForeignKey('Lista', null=True, blank=True, on_delete=models.CASCADE)
-    total_agregados = models.IntegerField()
-    total_presupuestado = models.IntegerField()
-    total_real = models.IntegerField()
-    total_final = models.IntegerField()
+    total_agregados = models.IntegerField(null=True, blank=True)
+    total_presupuestado = models.IntegerField(null=True, blank=True)
+    total_real = models.IntegerField(null=True, blank=True)
+    total_final = models.IntegerField(null=True, blank=True)
