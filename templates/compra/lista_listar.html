@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<h3>Listados</h3>
+
+<table>
+    <thead>
+    <tr>
+        <td>Nombre</td>
+        <td>Actiones</td>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% if object_list %}
+
+    {% for Lista in object_list %}
+
+        <tr>
+            {% if Lista.finalizada == False %}
+            <td>{{ Lista.nombre }}</td>
+            {% endif %}
+
+            <td>
+                <a class="btn btn-primary" href="{% url 'compra:lista_actualizar' Lista.id %}">Editar</a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    {% else %}
+    <h3>No existen registros</h3>
+    {% endif %}
+    </tbody>
+</table>
+
+
+{% endblock %}
