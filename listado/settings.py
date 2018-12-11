@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'DWY4001/static/js','serviceWorker.js')  # OJO CON ESTO, no tengo claro si DWY4001 es la carpeta de la app que creaste con startapp o es la del django-admin stratproject.  debe ser aqui la que se crea con startapp y me parece que esa es listados, PERO REVISA Y ME CUENTAS
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'apps.producto',
     'apps.compra',
     'apps.usuario',
+    'pwa',
 ]
 
 MIDDLEWARE = [
