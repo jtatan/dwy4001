@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.producto',
     'apps.compra',
     'apps.usuario',
+    'apps.api',
     'accounts',
     'django.contrib.sites',
     'allauth',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'pwa',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

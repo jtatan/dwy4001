@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, TemplateView
 from .models import ProLista, Lista
 from django.urls import reverse_lazy
 
@@ -7,6 +7,7 @@ from apps.compra.formularios import ProLista_Formulario, ProLista_Compra, Lista_
 
 # Create your views here.
 #LISTA
+
 class Lista_Listar(ListView):
     template_name = 'compra/lista_listar.html'
     context_object_name = 'lista'
@@ -24,7 +25,7 @@ class Lista_Crear(CreateView):
     model = Lista
     form_class = Lista_Formulario
     template_name = 'compra/lista_crear.html'
-    success_url = reverse_lazy('compra:lista_listar')
+    success_url = reverse_lazy('compra:compra_lista')
 
 #PROLISTA
 class ProLista_Listar(ListView):
