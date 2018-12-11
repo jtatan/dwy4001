@@ -20,12 +20,14 @@
 
         <tr>
             {% if Lista.finalizada == False %}
-            <td>{{ Lista.nombre }}</td>
-            {% endif %}
-
+            <td><a class="btn btn-primary" href="{% url 'compra:compra_lista_id' Lista.id%}">{{ Lista.nombre }}</a></td>
             <td>
                 <a class="btn btn-primary" href="{% url 'compra:lista_actualizar' Lista.id %}">Editar</a>
             </td>
+
+            {% endif %}
+
+
 
         </tr>
 

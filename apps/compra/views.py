@@ -9,7 +9,7 @@ from apps.compra.formularios import ProLista_Formulario, ProLista_Compra, Lista_
 #LISTA
 class Lista_Listar(ListView):
     template_name = 'compra/lista_listar.html'
-    context_object_name = 'lista_listar'
+    context_object_name = 'lista'
 
     def get_queryset(self):
         return Lista.objects.all()
@@ -17,8 +17,8 @@ class Lista_Listar(ListView):
 class Lista_Actualizador(UpdateView):
     model = Lista
     form_class = Lista_Formulario
-    template_name = 'compra/lista_listar.html'
-    success_url = reverse_lazy('compra:lista_listado')
+    template_name = 'compra/lista_crear.html'
+    success_url = reverse_lazy('compra:lista_listar')
 
 #PROLISTA
 class ProLista_Listar(ListView):
@@ -36,13 +36,13 @@ class ProLista_Listar(ListView):
         total = 0
         for producto in productos:
             if producto.comprado == True:
-                total += producto.costo_real
+                total += producto.cantidad * producto.costo_real
         context['total_comprado'] = total
 
 
         total_final = 0
         for producto in productos:
-            total_final += producto.costo_presupuestado
+            total_final += producto.cantidad * producto.costo_presupuestado
         context['total_presupuestado'] = total_final
 
         return context
@@ -50,11 +50,12 @@ class ProLista_Actualizador(UpdateView):
     model = ProLista
     form_class = ProLista_Formulario
     template_name = 'compra/lista_productos_crear.html'
-    success_url = reverse_lazy('compra:lista_listado')
+    success_url = reverse_lazy('compra:compra_lista')
+
 class ProLista_Comprar(UpdateView):
     model = ProLista
     form_class = ProLista_Compra
     template_name = 'compra/lista_productos_comprar.html'
-    success_url = reverse_lazy('compra:lista_listado')
+    success_url = reverse_lazy('compra:compra_lista')
 
 

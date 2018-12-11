@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content%}
 
 <h3>Productos</h3>
@@ -28,10 +29,11 @@
         <td>{{ ProLista.costo_presupuestado }}</td>
         <td>{{ ProLista.costo_real }}</td>
 
+
         <td>
             <a class="btn btn-primary" href="{% url 'compra:comprar_actualizar' ProLista.id %}">Editar</a>
             {% if ProLista.comprado == False %}
-            <a class="btn btn-primary" href="{% url 'compra:comprar_lista' ProLista.id %}">Comprar</a>
+            <a class="btn btn-primary" href="{% url 'compra:compra_comprar' ProLista.id %}">Comprar</a>
             {% else %}
             <a>Comprado!</a>
             {% endif %}
@@ -48,7 +50,6 @@
 </table>
 <h3>Total Presupuestado: {{ total_presupuestado }} </h3>
 <h3>Total: {{ total_comprado }}</h3>
-
 
 
 {% endblock %}
