@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+
+<h3>Productos</h3>
+
+<table>
+    <thead>
+    <tr>
+        <td>Producto</td>
+        <td>Cantidad</td>
+        <td>Tienda</td>
+        <td>Costo Presupuestado</td>
+        <td>Costo Total</td>
+        <td>Acciones</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% if object_list %}
+
+    {% for ProLista in object_list %}
+
+    <tr>
+        <td>{{ ProLista.producto }}</td>
+        <td>{{ ProLista.cantidad }}</td>
+        <td>{{ ProLista.tienda }}</td>
+        <td>{{ ProLista.costo_presupuestado }}</td>
+        <td>{{ ProLista.costo_real }}</td>
+
+
+        <td>
+            <a class="btn btn-primary" href="{% url 'compra:comprar_actualizar' ProLista.id %}">Editar</a>
+            {% if ProLista.comprado == False %}
+            <a class="btn btn-primary" href="{% url 'compra:compra_comprar' ProLista.id %}">Comprar</a>
+            {% else %}
+            <a>Comprado!</a>
+            {% endif %}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    {% else %}
+    <h3>No existen registros</h3>
+    {% endif %}
+    </tbody>
+</table>
+<h3>Total Presupuestado: {{ total_presupuestado }} </h3>
+<h3>Total: {{ total_comprado }}</h3>
+
+
+{% endblock %}
