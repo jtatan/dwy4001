@@ -8,10 +8,6 @@ from apps.compra.formularios import ProLista_Formulario, ProLista_Compra, Lista_
 # Create your views here.
 #LISTA
 
-class IndexView(TemplateView):
-    template_name = 'compra/lista_listar.html'
-
-
 class Lista_Listar(ListView):
     template_name = 'compra/lista_listar.html'
     context_object_name = 'lista'
